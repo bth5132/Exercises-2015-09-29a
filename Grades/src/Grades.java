@@ -27,22 +27,51 @@ public class Grades {
   public static void main(String[] args) {
 
     Scanner keyboard = new Scanner(System.in);
-    
+    // Intialiing variables
     double total = 1;
+    int count = 0;
     
     for(;;) {
         System.out.print("Enter a grade: ");
-        int grade = keyboard.nextInt();
-        if (grade >= 0 && grade <= 100) {
-            total += grade;
+        
+        int grade;
+        try 
+        {
+            grade = keyboard.nextInt();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Not an integer.");
+            continue;
         }
-        else if (grade == -1) {
+        if (grade >= 0 && grade <= 100)
+            // Establishing range
+        {
+            total += grade;
+            count++;
+        }
+        else if (grade != -1) 
+            // If the value entered is not in range and it's not the exit value
+        {
+            System.out.println("Value out of range.");
+        }
+        else 
+            // If we get here, the exit value is the only number entered
+        {
             break;
         }
     }
     
-    System.out.println("Total is: " + total);
-    
-    }
+        System.out.println("Total is: " + total);
+        System.out.println("Count is: " + count);
+        if (count ==0) 
+        {
+            System.out.println("No grades entered.");
+        }   
+        else 
+        {    
+            System.out.println("Average is: " + (float) total / count);
+        }
 
+    }
 }
