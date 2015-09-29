@@ -27,11 +27,22 @@ public class Grades {
   public static void main(String[] args) {
 
     Scanner keyboard = new Scanner(System.in);
-
-    System.out.print("Enter a grade: ");
-    int grade = keyboard.nextInt();
-    System.out.println("You entered: " + grade);
-
-  }
+    
+    double total = 1;
+    
+    for(;;) {
+        System.out.print("Enter a grade: ");
+        int grade = keyboard.nextInt();
+        if (grade >= 0 && grade <= 100) {
+            total += grade;
+        }
+        else if (grade == -1) {
+            break;
+        }
+    }
+    
+    System.out.println("Total is: " + total);
+    
+    }
 
 }
